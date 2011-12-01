@@ -1,7 +1,6 @@
 package com.gwtfb.client;
 
 import com.google.gwt.core.client.EntryPoint;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -9,7 +8,6 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.DecoratorPanel;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -29,21 +27,27 @@ import com.gwtfb.sdk.FBXfbml;
  * @author ola
  * 
  */
-public class GwtFB implements EntryPoint, ValueChangeHandler<String>  {
+public class GwtFB implements EntryPoint, ValueChangeHandler<String> {
 
-    
-	/**
-	 * Localhost 8888
+	/*
+	 * The following variables should be exported into another class and that
+	 * class should be in the .gitignore because these values are you app
+	 * secret, so they should not be visible to others, even if it is open
+	 * source. This creates a security hole that any person can use you're app
+	 * secret to make their own app that gets data from your users with your
+	 * knowledge and/or your users'!
 	 */
-     //public String APPID = "1d81c942b38e2e6b3fc35a147d371ab3";
-	
+	// /**
+	// * Localhost 8888
+	// */
+	// // public String APPID = "REMOVED";
+	//
+	// /**
+	// * www.gwtfb.com
+	// */
+	// public String APPID = "REMOVED";
 
-    /**
-     * www.gwtfb.com
-     */
-   public String APPID = "0d51db8fd8b95ef0c2337ccbdc00d736";
-	
-	private DockPanel mainPanel = new DockPanel ();
+	private DockPanel mainPanel = new DockPanel();
 	private SimplePanel mainView = new SimplePanel ();
 	private SimplePanel sideBarView = new SimplePanel ();
 	
@@ -61,7 +65,7 @@ public class GwtFB implements EntryPoint, ValueChangeHandler<String>  {
 		
 	    History.addValueChangeHandler ( this );
 	
-		fbCore.init(APPID, status, cookie, xfbml);
+		fbCore.init(FB.APPID, status, cookie, xfbml);
 		
 		RootPanel root = RootPanel.get();
 		root.getElement().setId ( "TheApp" );

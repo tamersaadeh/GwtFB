@@ -1,4 +1,7 @@
 .project
 .settings
-.class
-.
+*.class
+. ##I'm not sure this does anything
+*classes*
+#src/com/gwtfb/client/FB.java ##Uncomment this after you change your appsecret
+*appengine-generated*
